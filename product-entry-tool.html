@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أداة إدخال المنتجات لمتجر COR</title>
+    <title>أداة إضافة المنتجات لمتجر COR</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,191 +11,137 @@
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
+            background-color: #f9fafb;
+        }
+        .form-checkbox:checked {
+            background-color: #1f2937;
+            border-color: #1f2937;
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="p-8">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">أداة إضافة المنتجات</h1>
+        <p class="text-center text-gray-600 mb-8">املأ النموذج لإنشاء كود المنتج الجديد.</p>
 
-    <div class="container mx-auto p-8">
-        <div class="bg-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
-            <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">أداة إدارة المنتجات</h1>
-            <p class="text-gray-600 mb-8 text-center">أضف منتجًا جديدًا وسيظهر في المتجر تلقائيًا.</p>
+        <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-700 p-4 mb-8" role="alert">
+            <p class="font-bold">تعليمات هامة:</p>
+            <ol class="list-decimal list-inside mt-2">
+                <li>املأ جميع الحقول بالأسفل.</li>
+                <li>اضغط على زر "إنشاء كود المنتج".</li>
+                <li>سيظهر الكود في الصندوق بالأسفل. اضغط على "نسخ الكود".</li>
+                <li>اذهب إلى ملف <code class="bg-blue-100 p-1 rounded text-sm">products.json</code> في مشروعك.</li>
+                <li>اذهب إلى نهاية الملف، قبل القوس المربع الأخير <code class="bg-blue-100 p-1 rounded text-sm">]</code>، ضع فاصلة <code class="bg-blue-100 p-1 rounded text-sm">,</code> ثم الصق الكود المنسوخ.</li>
+                <li>احفظ التغييرات وارفعها. سيظهر المنتج الجديد للجميع.</li>
+            </ol>
+        </div>
 
-            <div class="bg-blue-50 border-r-4 border-blue-500 p-4 mb-8">
-                <h3 class="font-bold text-blue-800">كيف يعمل؟</h3>
-                <ul class="list-disc list-inside mt-2 text-blue-700">
-                    <li>املأ جميع تفاصيل المنتج في النموذج أدناه.</li>
-                    <li>رقم المنتج (ID) سيتم تحديده تلقائيًا.</li>
-                    <li>عند الضغط على "إضافة المنتج الآن"، سيتم حفظه في المتصفح.</li>
-                    <li>افتح صفحة المتجر في نفس المتصفح لرؤية المنتج الجديد.</li>
-                    <li class="font-semibold">ملاحظة: المنتجات المضافة تظهر فقط في هذا المتصفح.</li>
-                </ul>
+        <form id="product-form" class="space-y-6">
+            <!-- ID, Name, Price -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label for="id" class="block text-sm font-medium text-gray-700">رقم المنتج (ID)</label>
+                    <input type="number" id="id" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500" placeholder="مثال: 10">
+                    <p class="mt-1 text-xs text-gray-500">انظر لآخر رقم منتج في الملف وأضف 1.</p>
+                </div>
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">اسم المنتج</label>
+                    <input type="text" id="name" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500" placeholder="مثال: قميص كتان أزرق">
+                </div>
+                <div>
+                    <label for="price" class="block text-sm font-medium text-gray-700">السعر (ر.س)</label>
+                    <input type="number" id="price" step="0.01" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500" placeholder="مثال: 199.50">
+                </div>
+            </div>
+
+            <!-- Image & Description -->
+            <div>
+                <label for="image" class="block text-sm font-medium text-gray-700">رابط الصورة</label>
+                <input type="url" id="image" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500" placeholder="https://example.com/image.jpg">
+            </div>
+            <div>
+                <label for="description" class="block text-sm font-medium text-gray-700">وصف المنتج</label>
+                <textarea id="description" rows="3" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500" placeholder="اكتب وصفاً جذاباً للمنتج هنا..."></textarea>
+            </div>
+
+            <!-- Category -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">القسم</label>
+                <select id="category" required class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500">
+                    <option value="رجالي">رجالي</option>
+                    <option value="نسائي">نسائي</option>
+                    <option value="أطفال">أطفال</option>
+                    <option value="اكسسوار">اكسسوار</option>
+                    <option value="للجنسين">للجنسين</option>
+                </select>
             </div>
             
-            <div id="success-message" class="hidden bg-green-100 border-r-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
-              <p class="font-bold">نجاح!</p>
-              <p>تمت إضافة المنتج بنجاح. يمكنك الآن <a href="./index.html" target="_blank" class="font-semibold underline">زيارة المتجر</a> لرؤيته.</p>
+            <!-- Sizes -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">المقاسات المتاحة</label>
+                <div id="sizes" class="mt-2 grid grid-cols-3 sm:grid-cols-6 gap-2">
+                    <!-- Sizes will be populated by JS -->
+                </div>
             </div>
 
-            <form id="product-form" class="space-y-6">
-                <!-- ID, Name, Price -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div>
-                        <label for="id" class="block text-sm font-medium text-gray-700">رقم المنتج (ID)</label>
-                        <input type="number" id="id" readonly class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 cursor-not-allowed">
-                    </div>
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">اسم المنتج <span class="text-red-500">*</span></label>
-                        <input type="text" id="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500">
-                    </div>
-                    <div>
-                        <label for="price" class="block text-sm font-medium text-gray-700">السعر (بالريال) <span class="text-red-500">*</span></label>
-                        <input type="number" id="price" step="0.01" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500">
-                    </div>
+            <!-- Colors -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">الألوان المتاحة</label>
+                <div id="colors" class="mt-2 grid grid-cols-3 sm:grid-cols-6 gap-2">
+                    <!-- Colors will be populated by JS -->
                 </div>
+            </div>
+            
+            <button type="submit" class="w-full bg-gray-800 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 transition-colors duration-300 font-bold">
+                إنشاء كود المنتج
+            </button>
+        </form>
 
-                <!-- Image URL -->
-                <div>
-                    <label for="image" class="block text-sm font-medium text-gray-700">رابط الصورة <span class="text-red-500">*</span></label>
-                    <input type="url" id="image" required placeholder="https://picsum.photos/seed/new-product/400/500" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 ltr text-left">
-                    <p class="text-xs text-gray-500 mt-1">يمكنك استخدام روابط من <a href="https://picsum.photos/" target="_blank" class="text-blue-500 hover:underline">picsum.photos</a> للصور التجريبية.</p>
-                </div>
-
-                <!-- Description -->
-                <div>
-                    <label for="description" class="block text-sm font-medium text-gray-700">وصف المنتج <span class="text-red-500">*</span></label>
-                    <textarea id="description" rows="3" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"></textarea>
-                </div>
-
-                <!-- Category -->
-                <div>
-                    <label for="category" class="block text-sm font-medium text-gray-700">القسم <span class="text-red-500">*</span></label>
-                    <select id="category" required class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500">
-                        <option value="رجالي">رجالي</option>
-                        <option value="نسائي">نسائي</option>
-                        <option value="أطفال">أطفال</option>
-                        <option value="اكسسوار">اكسسوار</option>
-                        <option value="للجنسين">للجنسين</option>
-                    </select>
-                </div>
-
-                <!-- Sizes -->
-                <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">المقاسات المتاحة <span class="text-red-500">*</span></label>
-                    <div id="sizes-container" class="flex flex-wrap gap-4">
-                        <!-- Sizes will be injected by JS -->
-                    </div>
-                </div>
-                
-                <!-- Colors -->
-                 <div class="space-y-2">
-                    <label class="block text-sm font-medium text-gray-700">الألوان المتاحة <span class="text-red-500">*</span></label>
-                    <div id="colors-container" class="flex flex-wrap gap-4">
-                        <!-- Colors will be injected by JS -->
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="border-t pt-6">
-                    <button type="submit" class="w-full bg-gray-800 text-white py-3 px-6 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 transition-all duration-300 font-bold text-lg">
-                        إضافة المنتج الآن
-                    </button>
-                </div>
-            </form>
+        <div id="output-container" class="mt-10 hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">الكود جاهز للنسخ</h2>
+            <div class="relative">
+                <textarea id="output" readonly class="w-full h-64 p-4 border border-gray-300 rounded-md bg-gray-50 font-mono text-sm" dir="ltr"></textarea>
+                <button id="copy-btn" class="absolute top-4 right-4 bg-gray-600 text-white py-1 px-3 rounded-md hover:bg-gray-500 text-sm">نسخ الكود</button>
+            </div>
         </div>
     </div>
 
     <script>
-        const STORAGE_KEY = 'customCorProducts';
-        const SIZES = ['S', 'M', 'L', 'XL', 'XXL', 'مقاس واحد'];
-        const COLORS = {
-            'أبيض': '#FFFFFF', 'كريمي': '#F5F5DC', 'أحمر': '#DC2626',
-            'أسود': '#000000', 'ذهبي': '#FFD700', 'فضي': '#C0C0C0',
-            'رمادي': '#808080', 'أزرق': '#3B82F6', 'بني': '#A52A2A', 'وردي': '#EC4899',
+        const allSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+        const allColors = {
+            'أسود': '#000000', 'أبيض': '#FFFFFF', 'رمادي': '#808080', 'أحمر': '#FF0000',
+            'أزرق': '#0000FF', 'أخضر': '#008000', 'أصفر': '#FFFF00', 'بيج': '#F5F5DC'
         };
 
-        const sizesContainer = document.getElementById('sizes-container');
-        const colorsContainer = document.getElementById('colors-container');
-        const idInput = document.getElementById('id');
-
-        // Function to get all products from localStorage
-        const getCustomProducts = () => {
-            try {
-                const productsJSON = localStorage.getItem(STORAGE_KEY);
-                return productsJSON ? JSON.parse(productsJSON) : [];
-            } catch (e) {
-                console.error("Error reading from localStorage", e);
-                return [];
-            }
-        };
-
-        // Function to set the next available ID
-        const setNextId = () => {
-             // In a real app, you would fetch all products including base ones.
-             // For this standalone tool, we just check what's in localStorage and assume base is less than 100.
-            const customProducts = getCustomProducts();
-            const lastId = customProducts.reduce((maxId, p) => Math.max(p.id, maxId), 12); // Assuming base products end around 12
-            idInput.value = lastId + 1;
-        };
-
-        // Populate sizes and colors checkboxes
-        SIZES.forEach(size => {
-            const div = document.createElement('div');
-            div.className = 'flex items-center';
-            const input = document.createElement('input');
-            input.type = 'checkbox';
-            input.id = `size-${size}`;
-            input.name = 'sizes';
-            input.value = size;
-            input.className = 'h-4 w-4 text-gray-600 border-gray-300 rounded focus:ring-gray-500';
+        const sizesContainer = document.getElementById('sizes');
+        allSizes.forEach(size => {
             const label = document.createElement('label');
-            label.htmlFor = `size-${size}`;
-            label.textContent = size;
-            label.className = 'mr-2 text-sm text-gray-700';
-            div.appendChild(input);
-            div.appendChild(label);
-            sizesContainer.appendChild(div);
+            label.className = 'flex items-center space-x-2-reverse space-x-2 p-2 border rounded-md cursor-pointer hover:bg-gray-50';
+            label.innerHTML = `
+                <input type="checkbox" class="form-checkbox h-4 w-4 text-gray-600 rounded" value="${size}">
+                <span class="text-sm font-medium text-gray-700">${size}</span>
+            `;
+            sizesContainer.appendChild(label);
         });
 
-        Object.entries(COLORS).forEach(([name, code]) => {
-            const div = document.createElement('div');
-            div.className = 'flex items-center';
-            const input = document.createElement('input');
-            input.type = 'checkbox';
-            input.id = `color-${name}`;
-            input.name = 'colors';
-            input.value = name;
-            input.className = 'h-4 w-4 text-gray-600 border-gray-300 rounded focus:ring-gray-500';
+        const colorsContainer = document.getElementById('colors');
+        Object.entries(allColors).forEach(([name, code]) => {
             const label = document.createElement('label');
-            label.htmlFor = `color-${name}`;
-            label.className = 'mr-2 text-sm text-gray-700 flex items-center';
-            
-            const colorSwatch = document.createElement('span');
-            colorSwatch.className = 'inline-block w-4 h-4 rounded-full ml-2 border';
-            colorSwatch.style.backgroundColor = code;
-
-            label.textContent = name;
-            label.appendChild(colorSwatch);
-            
-            div.appendChild(input);
-            div.appendChild(label);
-            colorsContainer.appendChild(div);
+            label.className = 'flex items-center space-x-2-reverse space-x-2 p-2 border rounded-md cursor-pointer hover:bg-gray-50';
+            label.innerHTML = `
+                <input type="checkbox" class="form-checkbox h-4 w-4 rounded" value="${name}" style="accent-color: ${code};">
+                <span class="text-sm font-medium text-gray-700">${name}</span>
+            `;
+            colorsContainer.appendChild(label);
         });
 
-        // Form submission logic
-        const form = document.getElementById('product-form');
-        form.addEventListener('submit', function(e) {
+        document.getElementById('product-form').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const selectedSizes = Array.from(document.querySelectorAll('input[name="sizes"]:checked')).map(el => el.value);
-            const selectedColors = Array.from(document.querySelectorAll('input[name="colors"]:checked')).map(el => el.value);
+            const selectedSizes = Array.from(document.querySelectorAll('#sizes input:checked')).map(el => el.value);
+            const selectedColors = Array.from(document.querySelectorAll('#colors input:checked')).map(el => el.value);
 
-            if (selectedSizes.length === 0 || selectedColors.length === 0) {
-                alert('الرجاء اختيار مقاس ولون واحد على الأقل.');
-                return;
-            }
-
-            const newProduct = {
+            const product = {
                 id: parseInt(document.getElementById('id').value),
                 name: document.getElementById('name').value,
                 price: parseFloat(document.getElementById('price').value),
@@ -203,31 +149,24 @@
                 description: document.getElementById('description').value,
                 category: document.getElementById('category').value,
                 sizes: selectedSizes,
-                colors: selectedColors,
+                colors: selectedColors
             };
-            
-            const customProducts = getCustomProducts();
-            customProducts.push(newProduct);
-            
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(customProducts));
-                
-                // Show success and reset form
-                document.getElementById('success-message').classList.remove('hidden');
-                form.reset();
-                setNextId();
-                window.scrollTo(0, 0);
 
-            } catch (e) {
-                console.error("Error writing to localStorage", e);
-                alert('حدث خطأ أثناء حفظ المنتج.');
-            }
+            const outputTextArea = document.getElementById('output');
+            outputTextArea.value = JSON.stringify(product, null, 2);
+
+            document.getElementById('output-container').classList.remove('hidden');
+            outputTextArea.focus();
         });
         
-        // Initialize the form
-        setNextId();
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const outputTextArea = document.getElementById('output');
+            outputTextArea.select();
+            document.execCommand('copy');
+            this.textContent = 'تم النسخ!';
+            setTimeout(() => { this.textContent = 'نسخ الكود'; }, 2000);
+        });
 
     </script>
-
 </body>
 </html>

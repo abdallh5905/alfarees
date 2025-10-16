@@ -5,10 +5,13 @@
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>متجر COR للملابس</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
     <style>
       body {
         font-family: 'Tajawal', sans-serif;
@@ -35,11 +38,14 @@
         animation: fade-in-out 3s ease-in-out forwards;
       }
     </style>
-  <script type="importmap">
+    <!-- Babel for JSX/TS transpilation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Import Map for React -->
+    <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/"
   }
@@ -48,6 +54,7 @@
 </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
+    <!-- Note the type="text/babel" and data-type="module" -->
+    <script type="text/babel" data-type="module" src="./index.tsx"></script>
   </body>
 </html>
