@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة إدخال المنتجات لمتجر COR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">أداة إدخال منتج جديد</h1>
+            <p class="text-gray-600 mb-8 text-center">املأ الحقول التالية لإنشاء الكود البرمجي للمنتج بسهولة.</p>
+
+            <div class="bg-blue-50 border-r-4 border-blue-500 p-4 mb-8">
+                <h3 class="font-bold text-blue-800">تعليمات هامة:</h3>
+                <ul class="list-disc list-inside mt-2 text-blue-700">
+                    <li>املأ جميع الحقول المطلوبة للمنتج.</li>
+                    <li>بالنسبة لـ <strong>"رقم المنتج (ID)"</strong>: افتح ملف <code>constants.ts</code>، انظر إلى رقم آخر منتج في القائمة، وأضف 1. (مثال: إذا كان آخر ID هو 12، أدخل 13).</li>
+                    <li>بعد الضغط على زر "إنشاء الكود"، انسخ النص الذي يظهر في الصندوق الأخضر.</li>
+                    <li>افتح ملف <code>constants.ts</code> والصق الكود المنسوخ داخل مصفوفة <code>PRODUCTS</code> قبل القوس <code>];</code>.</li>
+                </ul>
+            </div>
+
+            <form id="product-form" class="space-y-6">
+                <!-- ID, Name, Price -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="id" class="block text-sm font-medium text-gray-700">رقم المنتج (ID) <span class="text-red-500">*</span></label>
+                        <input type="number" id="id" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500">
+                    </div>
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">اسم المنتج <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500">
+                    </div>
+                    <div>
+                        <label for="price" class="block text-sm font-medium text-gray-700">السعر (بالريال) <span class="text-red-500">*</span></label>
+                        <input type="number" id="price" step="0.01" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500">
+                    </div>
+                </div>
+
+                <!-- Image URL -->
+                <div>
+                    <label for="image" class="block text-sm font-medium text-gray-700">رابط الصورة <span class="text-red-500">*</span></label>
+                    <input type="url" id="image" required placeholder="https://example.com/image.jpg" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 ltr text-left">
+                    <p class="text-xs text-gray-500 mt-1">يمكنك استخدام روابط من <a href="https://picsum.photos/" target="_blank" class="text-blue-500 hover:underline">picsum.photos</a> للصور التجريبية.</p>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">وصف المنتج <span class="text-red-500">*</span></label>
+                    <textarea id="description" rows="3" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"></textarea>
+                </div>
+
+                <!-- Category -->
+                <div>
+                    <label for="category" class="block text-sm font-medium text-gray-700">القسم <span class="text-red-500">*</span></label>
+                    <select id="category" required class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500">
+                        <option value="رجالي">رجالي</option>
+                        <option value="نسائي">نسائي</option>
+                        <option value="أطفال">أطفال</option>
+                        <option value="اكسسوار">اكسسوار</option>
+                        <option value="للجنسين">للجنسين</option>
+                    </select>
+                </div>
+
+                <!-- Sizes -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">المقاسات المتاحة <span class="text-red-500">*</span></label>
+                    <div id="sizes-container" class="flex flex-wrap gap-4">
+                        <!-- Sizes will be injected by JS -->
+                    </div>
+                </div>
+                
+                <!-- Colors -->
+                 <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-700">الألوان المتاحة <span class="text-red-500">*</span></label>
+                    <div id="colors-container" class="flex flex-wrap gap-4">
+                        <!-- Colors will be injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="border-t pt-6">
+                    <button type="submit" class="w-full bg-gray-800 text-white py-3 px-6 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 transition-all duration-300 font-bold text-lg">
+                        إنشاء كود المنتج
+                    </button>
+                </div>
+            </form>
+
+            <!-- Output Area -->
+            <div id="output-container" class="mt-8 hidden">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">الكود جاهز للنسخ:</h2>
+                <div class="relative bg-gray-900 text-white p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                    <button id="copy-button" class="absolute top-2 left-2 bg-gray-700 hover:bg-gray-600 text-white py-1 px-3 rounded-md text-xs">نسخ</button>
+                    <pre><code id="output-code"></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SIZES = ['S', 'M', 'L', 'XL', 'XXL', 'مقاس واحد'];
+        const COLORS = {
+            'أبيض': '#FFFFFF', 'كريمي': '#F5F5DC', 'أحمر': '#DC2626',
+            'أسود': '#000000', 'ذهبي': '#FFD700', 'فضي': '#C0C0C0',
+            'رمادي': '#808080', 'أزرق': '#3B82F6', 'بني': '#A52A2A', 'وردي': '#EC4899',
+        };
+
+        const sizesContainer = document.getElementById('sizes-container');
+        const colorsContainer = document.getElementById('colors-container');
+        
+        SIZES.forEach(size => {
+            const div = document.createElement('div');
+            div.className = 'flex items-center';
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.id = `size-${size}`;
+            input.name = 'sizes';
+            input.value = size;
+            input.className = 'h-4 w-4 text-gray-600 border-gray-300 rounded focus:ring-gray-500';
+            const label = document.createElement('label');
+            label.htmlFor = `size-${size}`;
+            label.textContent = size;
+            label.className = 'mr-2 text-sm text-gray-700';
+            div.appendChild(input);
+            div.appendChild(label);
+            sizesContainer.appendChild(div);
+        });
+
+        Object.entries(COLORS).forEach(([name, code]) => {
+            const div = document.createElement('div');
+            div.className = 'flex items-center';
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.id = `color-${name}`;
+            input.name = 'colors';
+            input.value = name;
+            input.className = 'h-4 w-4 text-gray-600 border-gray-300 rounded focus:ring-gray-500';
+            const label = document.createElement('label');
+            label.htmlFor = `color-${name}`;
+            label.className = 'mr-2 text-sm text-gray-700 flex items-center';
+            
+            const colorSwatch = document.createElement('span');
+            colorSwatch.className = 'inline-block w-4 h-4 rounded-full ml-2 border';
+            colorSwatch.style.backgroundColor = code;
+
+            label.textContent = name;
+            label.appendChild(colorSwatch);
+            
+            div.appendChild(input);
+            div.appendChild(label);
+            colorsContainer.appendChild(div);
+        });
+
+        const form = document.getElementById('product-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedSizes = Array.from(document.querySelectorAll('input[name="sizes"]:checked')).map(el => el.value);
+            const selectedColors = Array.from(document.querySelectorAll('input[name="colors"]:checked')).map(el => el.value);
+
+            if (selectedSizes.length === 0 || selectedColors.length === 0) {
+                alert('الرجاء اختيار مقاس ولون واحد على الأقل.');
+                return;
+            }
+
+            const product = {
+                id: parseInt(document.getElementById('id').value),
+                name: document.getElementById('name').value,
+                price: parseFloat(document.getElementById('price').value),
+                image: document.getElementById('image').value,
+                description: document.getElementById('description').value,
+                category: document.getElementById('category').value,
+                sizes: selectedSizes,
+                colors: selectedColors,
+            };
+
+            const codeString = JSON.stringify(product, null, 2) + ',';
+
+            const outputContainer = document.getElementById('output-container');
+            const outputCode = document.getElementById('output-code');
+            
+            outputCode.textContent = codeString;
+            outputContainer.classList.remove('hidden');
+        });
+        
+        const copyButton = document.getElementById('copy-button');
+        copyButton.addEventListener('click', function() {
+            const codeToCopy = document.getElementById('output-code').textContent;
+            navigator.clipboard.writeText(codeToCopy).then(() => {
+                copyButton.textContent = 'تم النسخ!';
+                setTimeout(() => {
+                    copyButton.textContent = 'نسخ';
+                }, 2000);
+            }, (err) => {
+                console.error('Could not copy text: ', err);
+                alert('فشل النسخ');
+            });
+        });
+
+    </script>
+
+</body>
+</html>

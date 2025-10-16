@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Page, User } from '../types';
 
 interface RegisterPageProps {
   onRegister: (user: User) => void;
-  onNavigate: (page: Page) => void;
+  onNavigate: (page: Page, category?: string) => void;
 }
 
 const RegisterPage: React.FC<RegisterPageProps> = ({ onRegister, onNavigate }) => {

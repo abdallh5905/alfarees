@@ -1,4 +1,3 @@
-
 export interface Product {
   id: number;
   name: string;
@@ -6,6 +5,8 @@ export interface Product {
   image: string;
   description: string;
   category: string;
+  sizes: string[];
+  colors: string[];
 }
 
 export interface CartItem extends Product {

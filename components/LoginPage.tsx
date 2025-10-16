@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Page, User } from '../types';
 
 interface LoginPageProps {
   onLogin: (user: User) => void;
-  onNavigate: (page: Page) => void;
+  onNavigate: (page: Page, category?: string) => void;
 }
 
 const LoginPage: React.FC<LoginPageProps> = ({ onLogin, onNavigate }) => {
