@@ -16,6 +16,30 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState<string>('');
+  const [allProducts, setAllProducts] = useState<Product[]>(PRODUCTS);
+
+  useEffect(() => {
+    // Load products from localStorage and merge with initial products
+    try {
+      const customProductsJSON = localStorage.getItem('customCorProducts');
+      if (customProductsJSON) {
+        const customProducts: Product[] = JSON.parse(customProductsJSON);
+        // Combine and remove duplicates, giving precedence to custom products if IDs clash
+        const combined = [...PRODUCTS];
+        const productIds = new Set(PRODUCTS.map(p => p.id));
+
+        for (const customProduct of customProducts) {
+          if (!productIds.has(customProduct.id)) {
+            combined.push(customProduct);
+            productIds.add(customProduct.id);
+          }
+        }
+        setAllProducts(combined);
+      }
+    } catch (error) {
+      console.error("Failed to load custom products from localStorage", error);
+    }
+  }, []);
 
   useEffect(() => {
     if (toastMessage) {
@@ -100,9 +124,9 @@ const App: React.FC = () => {
   const renderPage = () => {
     switch (currentPage) {
       case Page.HOME:
-        return <HomePage onNavigate={handleNavigate} onAddToCart={handleAddToCart} onBuyNow={handleBuyNow} />;
+        return <HomePage products={allProducts} onNavigate={handleNavigate} onAddToCart={handleAddToCart} onBuyNow={handleBuyNow} />;
       case Page.PRODUCTS:
-        return <ProductsPage products={PRODUCTS} onAddToCart={handleAddToCart} onBuyNow={handleBuyNow} searchQuery={searchQuery} category={categoryFilter} />;
+        return <ProductsPage products={allProducts} onAddToCart={handleAddToCart} onBuyNow={handleBuyNow} searchQuery={searchQuery} category={categoryFilter} />;
       case Page.CART:
         return <CartPage cartItems={cartItems} onUpdateQuantity={handleUpdateQuantity} onRemoveFromCart={handleRemoveFromCart} />;
       case Page.LOGIN:
@@ -110,7 +134,7 @@ const App: React.FC = () => {
       case Page.REGISTER:
         return <RegisterPage onRegister={handleRegister} onNavigate={handleNavigate} />;
       default:
-        return <HomePage onNavigate={handleNavigate} onAddToCart={handleAddToCart} onBuyNow={handleBuyNow} />;
+        return <HomePage products={allProducts} onNavigate={handleNavigate} onAddToCart={handleAddToCart} onBuyNow={handleBuyNow} />;
     }
   };
 

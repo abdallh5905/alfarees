@@ -1,16 +1,16 @@
 import React from 'react';
 import { Page, Product } from '../types';
-import { PRODUCTS } from '../constants';
 import ProductCard from './ProductCard';
 
 interface HomePageProps {
+  products: Product[];
   onNavigate: (page: Page, category?: string) => void;
   onAddToCart: (product: Product) => void;
   onBuyNow: (product: Product) => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart, onBuyNow }) => {
-    const featuredProducts = PRODUCTS.slice(0, 4);
+const HomePage: React.FC<HomePageProps> = ({ products, onNavigate, onAddToCart, onBuyNow }) => {
+    const featuredProducts = products.slice(0, 4);
 
     const categories = [
         {

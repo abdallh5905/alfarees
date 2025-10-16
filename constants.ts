@@ -1,3 +1,5 @@
+// This file contains the initial/base products for the store.
+// Products added via the product-entry-tool will be loaded from localStorage.
 import { Product } from './types';
 
 export const PRODUCTS: Product[] = [

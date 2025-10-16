@@ -18,25 +18,31 @@
 
     <div class="container mx-auto p-8">
         <div class="bg-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
-            <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">أداة إدخال منتج جديد</h1>
-            <p class="text-gray-600 mb-8 text-center">املأ الحقول التالية لإنشاء الكود البرمجي للمنتج بسهولة.</p>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">أداة إدارة المنتجات</h1>
+            <p class="text-gray-600 mb-8 text-center">أضف منتجًا جديدًا وسيظهر في المتجر تلقائيًا.</p>
 
             <div class="bg-blue-50 border-r-4 border-blue-500 p-4 mb-8">
-                <h3 class="font-bold text-blue-800">تعليمات هامة:</h3>
+                <h3 class="font-bold text-blue-800">كيف يعمل؟</h3>
                 <ul class="list-disc list-inside mt-2 text-blue-700">
-                    <li>املأ جميع الحقول المطلوبة للمنتج.</li>
-                    <li>بالنسبة لـ <strong>"رقم المنتج (ID)"</strong>: افتح ملف <code>constants.ts</code>، انظر إلى رقم آخر منتج في القائمة، وأضف 1. (مثال: إذا كان آخر ID هو 12، أدخل 13).</li>
-                    <li>بعد الضغط على زر "إنشاء الكود"، انسخ النص الذي يظهر في الصندوق الأخضر.</li>
-                    <li>افتح ملف <code>constants.ts</code> والصق الكود المنسوخ داخل مصفوفة <code>PRODUCTS</code> قبل القوس <code>];</code>.</li>
+                    <li>املأ جميع تفاصيل المنتج في النموذج أدناه.</li>
+                    <li>رقم المنتج (ID) سيتم تحديده تلقائيًا.</li>
+                    <li>عند الضغط على "إضافة المنتج الآن"، سيتم حفظه في المتصفح.</li>
+                    <li>افتح صفحة المتجر في نفس المتصفح لرؤية المنتج الجديد.</li>
+                    <li class="font-semibold">ملاحظة: المنتجات المضافة تظهر فقط في هذا المتصفح.</li>
                 </ul>
+            </div>
+            
+            <div id="success-message" class="hidden bg-green-100 border-r-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+              <p class="font-bold">نجاح!</p>
+              <p>تمت إضافة المنتج بنجاح. يمكنك الآن <a href="./index.html" target="_blank" class="font-semibold underline">زيارة المتجر</a> لرؤيته.</p>
             </div>
 
             <form id="product-form" class="space-y-6">
                 <!-- ID, Name, Price -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
-                        <label for="id" class="block text-sm font-medium text-gray-700">رقم المنتج (ID) <span class="text-red-500">*</span></label>
-                        <input type="number" id="id" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500">
+                        <label for="id" class="block text-sm font-medium text-gray-700">رقم المنتج (ID)</label>
+                        <input type="number" id="id" readonly class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 cursor-not-allowed">
                     </div>
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">اسم المنتج <span class="text-red-500">*</span></label>
@@ -51,7 +57,7 @@
                 <!-- Image URL -->
                 <div>
                     <label for="image" class="block text-sm font-medium text-gray-700">رابط الصورة <span class="text-red-500">*</span></label>
-                    <input type="url" id="image" required placeholder="https://example.com/image.jpg" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 ltr text-left">
+                    <input type="url" id="image" required placeholder="https://picsum.photos/seed/new-product/400/500" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500 ltr text-left">
                     <p class="text-xs text-gray-500 mt-1">يمكنك استخدام روابط من <a href="https://picsum.photos/" target="_blank" class="text-blue-500 hover:underline">picsum.photos</a> للصور التجريبية.</p>
                 </div>
 
@@ -92,23 +98,15 @@
                 <!-- Submit Button -->
                 <div class="border-t pt-6">
                     <button type="submit" class="w-full bg-gray-800 text-white py-3 px-6 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 transition-all duration-300 font-bold text-lg">
-                        إنشاء كود المنتج
+                        إضافة المنتج الآن
                     </button>
                 </div>
             </form>
-
-            <!-- Output Area -->
-            <div id="output-container" class="mt-8 hidden">
-                <h2 class="text-xl font-bold text-gray-800 mb-4">الكود جاهز للنسخ:</h2>
-                <div class="relative bg-gray-900 text-white p-4 rounded-lg font-mono text-sm overflow-x-auto">
-                    <button id="copy-button" class="absolute top-2 left-2 bg-gray-700 hover:bg-gray-600 text-white py-1 px-3 rounded-md text-xs">نسخ</button>
-                    <pre><code id="output-code"></code></pre>
-                </div>
-            </div>
         </div>
     </div>
 
     <script>
+        const STORAGE_KEY = 'customCorProducts';
         const SIZES = ['S', 'M', 'L', 'XL', 'XXL', 'مقاس واحد'];
         const COLORS = {
             'أبيض': '#FFFFFF', 'كريمي': '#F5F5DC', 'أحمر': '#DC2626',
@@ -118,7 +116,29 @@
 
         const sizesContainer = document.getElementById('sizes-container');
         const colorsContainer = document.getElementById('colors-container');
-        
+        const idInput = document.getElementById('id');
+
+        // Function to get all products from localStorage
+        const getCustomProducts = () => {
+            try {
+                const productsJSON = localStorage.getItem(STORAGE_KEY);
+                return productsJSON ? JSON.parse(productsJSON) : [];
+            } catch (e) {
+                console.error("Error reading from localStorage", e);
+                return [];
+            }
+        };
+
+        // Function to set the next available ID
+        const setNextId = () => {
+             // In a real app, you would fetch all products including base ones.
+             // For this standalone tool, we just check what's in localStorage and assume base is less than 100.
+            const customProducts = getCustomProducts();
+            const lastId = customProducts.reduce((maxId, p) => Math.max(p.id, maxId), 12); // Assuming base products end around 12
+            idInput.value = lastId + 1;
+        };
+
+        // Populate sizes and colors checkboxes
         SIZES.forEach(size => {
             const div = document.createElement('div');
             div.className = 'flex items-center';
@@ -162,6 +182,7 @@
             colorsContainer.appendChild(div);
         });
 
+        // Form submission logic
         const form = document.getElementById('product-form');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -174,7 +195,7 @@
                 return;
             }
 
-            const product = {
+            const newProduct = {
                 id: parseInt(document.getElementById('id').value),
                 name: document.getElementById('name').value,
                 price: parseFloat(document.getElementById('price').value),
@@ -184,29 +205,27 @@
                 sizes: selectedSizes,
                 colors: selectedColors,
             };
-
-            const codeString = JSON.stringify(product, null, 2) + ',';
-
-            const outputContainer = document.getElementById('output-container');
-            const outputCode = document.getElementById('output-code');
             
-            outputCode.textContent = codeString;
-            outputContainer.classList.remove('hidden');
+            const customProducts = getCustomProducts();
+            customProducts.push(newProduct);
+            
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(customProducts));
+                
+                // Show success and reset form
+                document.getElementById('success-message').classList.remove('hidden');
+                form.reset();
+                setNextId();
+                window.scrollTo(0, 0);
+
+            } catch (e) {
+                console.error("Error writing to localStorage", e);
+                alert('حدث خطأ أثناء حفظ المنتج.');
+            }
         });
         
-        const copyButton = document.getElementById('copy-button');
-        copyButton.addEventListener('click', function() {
-            const codeToCopy = document.getElementById('output-code').textContent;
-            navigator.clipboard.writeText(codeToCopy).then(() => {
-                copyButton.textContent = 'تم النسخ!';
-                setTimeout(() => {
-                    copyButton.textContent = 'نسخ';
-                }, 2000);
-            }, (err) => {
-                console.error('Could not copy text: ', err);
-                alert('فشل النسخ');
-            });
-        });
+        // Initialize the form
+        setNextId();
 
     </script>
 
