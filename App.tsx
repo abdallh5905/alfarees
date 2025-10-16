@@ -1,4 +1,3 @@
-// FIX: Replaced placeholder content with a functional App component to resolve module errors.
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -8,38 +7,16 @@ import CartPage from './components/CartPage';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import { Page, Product, CartItem, User } from './types';
+import { productsData } from './data/products';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>(Page.HOME);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(productsData);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [user, setUser] = useState<User | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeSearchQuery, setActiveSearchQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Fetch products from the JSON file using a root-relative path for server compatibility
-    fetch('/products.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Network response was not ok, status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data: Product[]) => {
-        setProducts(data);
-      })
-      .catch(error => {
-        console.error("Error fetching products:", error);
-        setError("عذراً، لم نتمكن من تحميل المنتجات. يرجى المحاولة مرة أخرى لاحقاً.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
 
   useEffect(() => {
     // Scroll to top on page change
@@ -120,14 +97,6 @@ function App() {
 
 
   const renderPage = () => {
-    if (loading) {
-      return <div className="flex justify-center items-center h-screen"><p className="text-2xl">جاري تحميل المنتجات...</p></div>;
-    }
-
-    if (error) {
-       return <div className="flex justify-center items-center h-screen"><p className="text-2xl text-red-500">{error}</p></div>;
-    }
-
     switch (currentPage) {
       case Page.HOME:
         return <HomePage products={products} onAddToCart={handleAddToCart} onBuyNow={handleBuyNow} onNavigate={handleNavigate} />;
