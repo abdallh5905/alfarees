@@ -18,17 +18,25 @@ function App() {
   const [activeSearchQuery, setActiveSearchQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch products from the JSON file
-    fetch('./products.json')
-      .then(response => response.json())
+    // Fetch products from the JSON file using a root-relative path for server compatibility
+    fetch('/products.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok, status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data: Product[]) => {
         setProducts(data);
-        setLoading(false);
       })
       .catch(error => {
         console.error("Error fetching products:", error);
+        setError("عذراً، لم نتمكن من تحميل المنتجات. يرجى المحاولة مرة أخرى لاحقاً.");
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, []);
@@ -114,6 +122,10 @@ function App() {
   const renderPage = () => {
     if (loading) {
       return <div className="flex justify-center items-center h-screen"><p className="text-2xl">جاري تحميل المنتجات...</p></div>;
+    }
+
+    if (error) {
+       return <div className="flex justify-center items-center h-screen"><p className="text-2xl text-red-500">{error}</p></div>;
     }
 
     switch (currentPage) {
