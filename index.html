@@ -713,6 +713,51 @@
         max-width: 300px;
       }
     }
+
+    .footer-links {
+    direction: rtl;
+    text-align: right;
+    margin: 20px 0;
+}
+
+.footer-links h4 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 5px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #d4af37;
+    transform: translateX(-5px);
+}
+
+.footer-links i {
+    margin-left: 10px;
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
   </style>
 </head>
 <body>
@@ -911,6 +956,23 @@
 
   <!-- FOOTER -->
   <footer>
+    <div class="footer-links">
+    <h4>روابط حكومية تهمك</h4>
+    <ul>
+        <li>
+            <a href="https://www.haj.gov.sa/" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-kaaba"></i>
+                وزارة الحج والعمرة
+            </a>
+        </li>
+        <li>
+            <a href="https://my.gov.sa/ar/services/24401" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-file-alt"></i>
+                تصاريح العمرة - منصة Gov.sa
+            </a>
+        </li>
+    </ul>
+</div>
     <p>© 2025 فارس المدينة للعمرة والزيارة | للتواصل عبر الواتساب: 0545489149</p>
     <p>تصميم عبدالله محمد</p>
   </footer>
