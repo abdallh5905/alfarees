@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>من نحن | شركة الفارس للعمرة – خبرة 10 سنوات</title>
+  <meta name="description" content="تعرف على شركة الفارس للعمرة، خبرة 10 سنوات في تنظيم رحلات العمرة من المدينة المنورة. نقدم أفضل الخدمات، فنادق قريبة من الحرم، انتقالات مريحة، وأسعار تنافسية.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f9fafb;
+      color: #1e293b;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #002b5b;
+      --gold: #d4af37;
+      --gold-dark: #b8860b;
+      --light-gray: #f1f5f9;
+      --dark-gray: #334155;
+    }
+
+    /* شريط التنقل */
+    .navbar {
+      background: linear-gradient(135deg, #001e3a, #002b5b);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .logo-text h2 {
+      font-size: 1.4rem;
+      color: white;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .logo-text span {
+      font-size: 0.7rem;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .navbar {
+        padding: 1rem;
+      }
+    }
+
+    /* هيرو داخلي */
+    .inner-hero {
+      background: linear-gradient(120deg, #002b5b, #0e4a7a);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      color: white;
+    }
+
+    .inner-hero h1 {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .inner-hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* الحاويات */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: var(--gold);
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 4px;
+    }
+
+    /* بطاقة لماذا تختارنا */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .reason-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      border: 1px solid #eef2f6;
+    }
+
+    .reason-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+    .reason-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .reason-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* صور (معرض واقعي) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .gallery-img {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .gallery-img img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: 0.4s;
+    }
+
+    .gallery-img:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-caption {
+      padding: 12px;
+      text-align: center;
+      background: white;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    /* معلومات عنا + تواصل */
+    .info-contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      background: white;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      margin: 2rem 0;
+    }
+
+    .info-box, .contact-box {
+      background: var(--light-gray);
+      padding: 1.5rem;
+      border-radius: 20px;
+    }
+
+    .info-box h3, .contact-box h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      border-right: 4px solid var(--gold);
+      padding-right: 12px;
+    }
+
+    .contact-details {
+      margin: 1rem 0;
+    }
+
+    .contact-details p {
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn-wa:hover {
+      background: #128C7E;
+      transform: scale(1.02);
+    }
+
+    /* تقييمات العملاء */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+
+    .stars {
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-style: normal;
+      line-height: 1.6;
+      color: #2d3e50;
+    }
+
+    .reviewer {
+      margin-top: 12px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* جودة الخدمة + الأمان والخصوصية + الهدف */
+    .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .quality-item {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .quality-item i {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .footer {
+      background: var(--primary);
+      color: #ccc;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .fixed-wa {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #25D366;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: 0.3s;
+    }
+
+    .fixed-wa a {
+      color: white;
+      font-size: 2rem;
+    }
+
+    .fixed-wa:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .inner-hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط التنقل -->
+  <div class="navbar">
+    <div class="logo">
+      <i class="fas fa-mosque logo-icon"></i>
+      <div class="logo-text">
+        <h2>الفارس للعمرة</h2>
+        <span>خبرة 10 سنوات</span>
+      </div>
+    </div>
+    <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about-us">من نحن</a></li>
+      <li><a href="#why-us">لماذا نختارنا</a></li>
+      <li><a href="#reviews">آراء العملاء</a></li>
+      <li><a href="#quality">الجودة</a></li>
+      <li><a href="#contact">تواصل</a></li>
+      <li><a href="javascript:void(0)" onclick="window.location.href='/'">الرئيسية</a></li>
+    </ul>
+  </div>
+
+  <!-- هيرو الصفحة -->
+  <div class="inner-hero" data-aos="fade-down">
+    <h1>🛡️ من نحن – شركة الفارس للعمرة</h1>
+    <p>نسعى لتقديم أفضل خدمات العمرة من المدينة المنورة، مع الاهتمام بكل تفاصيل رحلتك لتكون تجربة روحانية مريحة وآمنة.</p>
+  </div>
+
+  <div class="container">
+    <!-- لماذا تختار الفارس للعمرة (القسم المطلوب) -->
+    <section id="why-us" data-aos="fade-up">
+      <h2 class="section-title">🛡️ لماذا تختار الفارس للعمرة؟</h2>
+      <div class="why-grid">
+        <div class="reason-card">
+          <div class="reason-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>خبرة 10 سنوات</h3>
+          <p>أكثر من عقد من التميز في تنظيم رحلات العمرة من المدينة المنورة.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon"><i class="fas fa-users"></i></div>
+          <h3>أكثر من 500 عميل سنويًا</h3>
+          <p>ثقة كبيرة من المعتمرين الذين اختارونا لقضاء مناسكهم.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon"><i class="fas fa-star"></i></div>
+          <h3>تقييمات 5 نجوم</h3>
+          <p>رضا العملاء هو دافعنا للاستمرار في تقديم الأفضل.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>خدمة إنسانية راقية</h3>
+          <p>نعاملكم كعائلة، ونسهر على راحتكم منذ لحظة الحجز حتى العودة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- معرض صور (واقعية وقريبة من الواقع) -->
+    <div data-aos="fade-up">
+      <h2 class="section-title">📸 صور من رحلاتنا</h2>
+      <div class="gallery-grid">
+        <div class="gallery-img">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdpdz2pGherYRKjdFNv3H9OO-C3wb5n1t0Tw&s" alt="المسجد النبوي المدينة المنورة">
+          <div class="gallery-caption">المدينة المنورة - المسجد النبوي</div>
+        </div>
+        <div class="gallery-img">
+          <img src="https://static.wixstatic.com/media/f5dab6_21d3800f41234956a791499114c349a2~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85/f5dab6_21d3800f41234956a791499114c349a2~mv2.jpg" alt="الكعبة المشرفة">
+          <div class="gallery-caption">مكة المكرمة - الكعبة المشرفة</div>
+        </div>
+        <div class="gallery-img">
+          <img src="https://alfarees.site/img/%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A9%20%D9%85%D9%86%20%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9.jpg" alt="فندق فاخر قرب الحرم">
+          <div class="gallery-caption">فنادق قريبة من الحرم</div>
+        </div>
+        <div class="gallery-img">
+          <img src="https://alfarees.site/img/%D8%B9%D9%85%D8%B1%D8%A9%20%D9%85%D9%86%20%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9.jpg" alt="حافلات حديثة لنقل المعتمرين">
+          <div class="gallery-caption">انتقالات مريحة ومكيفة</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- معلومات عنا + تواصل معنا -->
+    <div id="about-us" class="info-contact" data-aos="fade-right">
+      <div class="info-box">
+        <h3>📍 معلومات عنا</h3>
+        <p><strong>الاسم:</strong> الفارس للعمرة</p>
+        <p><strong>التخصص:</strong> تنظيم رحلات العمرة من المدينة المنورة</p>
+        <p><strong>الخدمة:</strong> حجز فنادق – انتقالات – برامج عمرة كاملة</p>
+        <p><strong>سنوات الخبرة:</strong> 10 سنوات في خدمة المعتمرين</p>
+        <p><i class="fas fa-map-marker-alt" style="color: var(--gold);"></i> مقرنا الرئيسي: المدينة المنورة – المملكة العربية السعودية</p>
+      </div>
+      <div class="contact-box" id="contact">
+        <h3>📞 تواصل معنا</h3>
+        <div class="contact-details">
+          <p><i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.3rem;"></i> واتساب: <strong>966545489149+</strong></p>
+          <p><i class="fas fa-phone-alt"></i> الهاتف: 0545489149</p>
+          <p><i class="fas fa-envelope"></i> البريد: info@alfarees.site</p>
+          <p><i class="fas fa-clock"></i> متاحين 24 ساعة للرد على استفساراتكم</p>
+        </div>
+        <a href="https://wa.me/966545489149" class="btn-wa"><i class="fab fa-whatsapp"></i> احجز رحلتك الآن عبر واتساب</a>
+      </div>
+    </div>
+
+    <!-- آراء العملاء ⭐⭐⭐⭐⭐ (10 تقييمات) -->
+    <section id="reviews" data-aos="fade-up">
+      <h2 class="section-title">⭐ آراء عملائنا الكرام</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"تجربة ممتازة جدًا، التنظيم كان احترافي من أول الوصول للمدينة لحد أداء العمرة، أنصح بيهم بشدة."</p>
+          <p class="reviewer">– أبو عبدالله</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"شركة محترمة جدًا والتعامل راقي، الفندق كان قريب من الحرم والخدمة ممتازة."</p>
+          <p class="reviewer">– أم محمد</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"أفضل رحلة عمرة عملتها، كل حاجة كانت ماشية بنظام وسهولة، جزاكم الله خيرًا."</p>
+          <p class="reviewer">– يوسف</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"أسعار مناسبة جدًا مقارنة بالخدمة، والمتابعة كانت مستمرة طول الرحلة."</p>
+          <p class="reviewer">– سارة</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"بصراحة تجربة مريحة جدًا، خصوصًا الانتقالات من المدينة لمكة كانت منظمة جدًا."</p>
+          <p class="reviewer">– فهد</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"خدمة العملاء ممتازة جدًا، بيردوا بسرعة وبيساعدوا في كل التفاصيل."</p>
+          <p class="reviewer">– نورة</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"رحلة عمرة منظمة بشكل رائع، والإقامة كانت مريحة وقريبة من الحرم."</p>
+          <p class="reviewer">– إبراهيم</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"أنصح أي حد يحجز معاهم، ناس محترمة والتزام بالمواعيد."</p>
+          <p class="reviewer">– أحمد</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"كل الشكر لفريق العمل، كانت رحلة موفقة ومريحة جدًا."</p>
+          <p class="reviewer">– محمد الحارثي</p>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"تجربة فوق الممتازة، وإن شاء الله مش آخر تعامل معاكم."</p>
+          <p class="reviewer">– علياء</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- جودة الخدمة + الأمان والخصوصية + الهدف -->
+    <div id="quality" class="quality-grid" data-aos="fade-up">
+      <div class="quality-item">
+        <i class="fas fa-hotel"></i>
+        <h3>🏨 جودة الخدمة</h3>
+        <p>فنادق قريبة من الحرم، انتقالات مريحة ومكيفة، تنظيم كامل للرحلة، دعم مستمر طوال فترة العمرة.</p>
+      </div>
+      <div class="quality-item">
+        <i class="fas fa-shield-alt"></i>
+        <h3>🔐 الأمان والخصوصية</h3>
+        <p>نلتزم بالحفاظ على بيانات عملائنا وعدم مشاركتها مع أي جهة خارجية، ونضمن سرية جميع المعلومات.</p>
+      </div>
+      <div class="quality-item">
+        <i class="fas fa-bullseye"></i>
+        <h3>🎯 هدفنا</h3>
+        <p>تقديم تجربة عمرة مميزة وسهلة لكل عميل، مع أفضل الأسعار وأعلى مستوى خدمة.</p>
+      </div>
+    </div>
+
+    <!-- قسم الحجز والاستفسار النهائي -->
+    <div style="text-align: center; margin: 3rem 0 2rem;" data-aos="zoom-in">
+      <h3 style="color: var(--primary);">💬 احجز الآن مع الفارس للعمرة</h3>
+      <p>فريقنا جاهز لمساعدتك في حجز رحلتك بكل سهولة – تواصل معنا الآن عبر واتساب واحصل على أفضل العروض.</p>
+      <a href="https://wa.me/966545489149" class="btn-wa" style="background: #25D366; font-size: 1.2rem; margin-top: 20px;"><i class="fab fa-whatsapp"></i> احجز عبر واتساب</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 شركة الفارس للعمرة – خبرة 10 سنوات في تنظيم رحلات العمرة من المدينة المنورة</p>
+    <p>أكثر من 500 عميل سنويًا ⭐⭐⭐⭐⭐ | جميع الحقوق محفوظة</p>
+    <p>للتواصل: <a href="https://wa.me/966545489149" style="color: var(--gold);">واتساب: 0545489149</a> | البريد الإلكتروني: info@alfarees.site</p>
+  </div>
+
+  <!-- زر واتساب ثابت -->
+  <div class="fixed-wa">
+    <a href="https://wa.me/966545489149" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true, easing: 'ease-out' });
+
+    const toggleBtn = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navLinks');
+    if(toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
