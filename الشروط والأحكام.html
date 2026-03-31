@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>الشروط والأحكام | فارس المدينة للعمرة</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #002b5b;
+      --gold: #d4af37;
+      --gold-dark: #b8860b;
+      --light-bg: #f9fafb;
+      --dark-text: #1e293b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden; /* منع التمرير الأفقي */
+      background: var(--light-bg);
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      color: var(--dark-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, #001e3a, var(--primary));
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      background: var(--gold-dark);
+      color: var(--primary);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .logo-text span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* المحتوى الرئيسي */
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .terms-card {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    .section-title {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin: 1.5rem 0 1rem;
+      padding-right: 0.8rem;
+      border-right: 4px solid var(--gold);
+    }
+
+    .section-title:first-of-type {
+      margin-top: 0;
+    }
+
+    p, li {
+      color: #334155;
+      margin-bottom: 0.8rem;
+      word-break: break-word;
+    }
+
+    ul, .service-list {
+      margin-right: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight {
+      background: #fef9e6;
+      padding: 1rem;
+      border-radius: 16px;
+      margin: 1.5rem 0;
+      border-right: 3px solid var(--gold);
+    }
+
+    .footer {
+      background: var(--primary);
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    .footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .fixed-wa {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #25D366;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: 0.3s;
+    }
+
+    .fixed-wa a {
+      color: white;
+      font-size: 2rem;
+    }
+
+    .fixed-wa:hover {
+      transform: scale(1.1);
+    }
+
+    hr {
+      margin: 1rem 0;
+      border: none;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    /* تحسينات الجوال */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.8rem 1rem;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+      }
+      .terms-card {
+        padding: 1.25rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      .inner-hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* ضبط العناصر العريضة */
+    img, iframe, video {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط التنقل -->
+  <div class="navbar">
+    <div class="logo">
+      <div class="logo-icon"><i class="fas fa-kaaba"></i></div>
+      <div class="logo-text">فارس <span>المدينة</span></div>
+    </div>
+    <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">الرئيسية</a></li>
+      <li><a href="/about.html">من نحن</a></li>
+      <li><a href="/booking.html">احجز رحلتك</a></li>
+      <li><a href="#">الشروط والأحكام</a></li>
+    </ul>
+  </div>
+
+  <!-- الهيرو الداخلي -->
+  <div class="inner-hero">
+    <h1>الشروط والأحكام</h1>
+    <p>تعرف على سياسات وضوابط رحلات العمرة مع شركة فارس المدينة للعمرة</p>
+  </div>
+
+  <div class="container">
+    <div class="terms-card">
+      
+      <!-- عن الحملة -->
+      <h2 class="section-title"><i class="fas fa-info-circle" style="color: var(--gold); margin-left: 8px;"></i> عن الحملة</h2>
+      <p>حملة <strong>فارس المدينة للعمرة</strong> توفر لكم رحلة منظمة ومريحة من <strong>المدينة المنورة</strong> إلى <strong>مكة المكرمة</strong>، بخدمات متكاملة وأسعار مناسبة، لضمان تجربة روحانية هادئة وآمنة.</p>
+
+      <!-- تفاصيل الرحلة -->
+      <h2 class="section-title"><i class="fas fa-map-marked-alt" style="color: var(--gold); margin-left: 8px;"></i> تفاصيل الرحلة</h2>
+      <ul>
+        <li><i class="fas fa-location-dot" style="color: var(--gold); margin-left: 8px;"></i> <strong>الانطلاق:</strong> المدينة المنورة</li>
+        <li><i class="fas fa-mosque" style="color: var(--gold); margin-left: 8px;"></i> <strong>الوجهة:</strong> مكة المكرمة</li>
+        <li><i class="fas fa-bus" style="color: var(--gold); margin-left: 8px;"></i> <strong>وسيلة النقل:</strong> باصات حديثة ومكيفة</li>
+        <li><i class="fas fa-hotel" style="color: var(--gold); margin-left: 8px;"></i> <strong>الإقامة:</strong> حجز فندق وغرفة حسب الباقة المتفق عليها</li>
+        <li><i class="fas fa-clock" style="color: var(--gold); margin-left: 8px;"></i> <strong>المدة:</strong> حسب البرنامج</li>
+        <li><i class="fas fa-tag" style="color: var(--gold); margin-left: 8px;"></i> <strong>يُحدد السعر:</strong> حسب الباقة</li>
+      </ul>
+
+      <!-- الخدمات المشمولة -->
+      <h2 class="section-title"><i class="fas fa-concierge-bell" style="color: var(--gold); margin-left: 8px;"></i> الخدمات المشمولة</h2>
+      <div class="service-list">
+        <p>✓ تنظيم كامل لرحلة العمرة</p>
+        <p>✓ حجز الفنادق والغرف (حسب الاتفاق)</p>
+        <p>✓ تنسيق ومتابعة طوال الرحلة</p>
+        <p>✓ الالتزام بالمواعيد</p>
+        <p>✓ دعم وخدمة عملاء</p>
+      </div>
+
+      <!-- طرق الدفع -->
+      <h2 class="section-title"><i class="fas fa-credit-card" style="color: var(--gold); margin-left: 8px;"></i> طرق الدفع</h2>
+      <ul>
+        <li>الدفع نقدًا عند الباص</li>
+        <li>أو تحويل بنكي</li>
+      </ul>
+
+      <!-- تأكيد الحجز -->
+      <h2 class="section-title"><i class="fas fa-check-circle" style="color: var(--gold); margin-left: 8px;"></i> تأكيد الحجز</h2>
+      <p>يُرجى تأكيد الحجز مسبقًا لضمان المقعد.<br>
+      لا يُعد الحجز مؤكدًا إلا بعد التواصل وتأكيد البيانات.</p>
+
+      <!-- سياسة الإلغاء -->
+      <h2 class="section-title"><i class="fas fa-ban" style="color: var(--gold); margin-left: 8px;"></i> سياسة الإلغاء</h2>
+      <div class="highlight">
+        <p><strong>فارس المدينة للعمرة</strong> — نود التنويه إلى ما يلي:</p>
+        <ul>
+          <li>يتم تأكيد الحجز بعد التواصل وتثبيت البيانات.</li>
+          <li>في حال إلغاء الرحلة قبل موعدها بـ 12 ساعة على الأقل، لا يتم تحصيل أي رسوم.</li>
+          <li>في حال الإلغاء قبل موعد الرحلة بمدة تتراوح بين ساعة إلى 3 ساعات، يتم تحصيل رسوم مقاعد الباص.</li>
+        </ul>
+      </div>
+
+      <!-- ملاحظة عامة -->
+      <hr>
+      <p style="font-size: 0.9rem; color: #64748b;">تلتزم شركة فارس المدينة للعمرة بتقديم أفضل الخدمات، وتحتفظ بالحق في تعديل الشروط حسب مقتضيات التشغيل مع إخطار العملاء. آخر تحديث: 2026</p>
+    </div>
+  </div>
+
+  <!-- فوتر -->
+  <div class="footer">
+    <p>© 2026 فارس المدينة للعمرة – جميع الحقوق محفوظة</p>
+    <p>الرقم الضريبي: 20250523216 | مكتب فارس المدينة للعمرة</p>
+    <p>📍 المدينة المنورة، حي العزيزية، 14514</p>
+    <p>للتواصل: <a href="https://wa.me/966545489149">واتساب 0545489149</a></p>
+  </div>
+
+  <!-- زر واتساب ثابت -->
+  <div class="fixed-wa">
+    <a href="https://wa.me/966545489149" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navLinks');
+    if(toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
