@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>عمرة من المدينة | اقتصادية و VIP | فارس المدينة للعمرة</title>
+  <meta name="description" content="أفضل عروض عمرة من المدينة المنورة: برامج اقتصادية وVIP. حجز عمرة من المدينة، أسعار مميزة، رحلات عمرة من المدينة بكل راحة وطمأنينة.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #002b5b;
+      --gold: #d4af37;
+      --gold-dark: #b8860b;
+      --light-bg: #f1f5f9;
+    }
+
+    /* شريط التنقل */
+    .navbar {
+      background: linear-gradient(135deg, #001e3a, #002b5b);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .logo-text h1 {
+      font-size: 1.5rem;
+      color: white;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .navbar {
+        padding: 1rem;
+      }
+    }
+
+    /* البطل (hero) بدون صور */
+    .hero-umrah {
+      background: linear-gradient(120deg, #002b5b 0%, #0a3a62 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-umrah::before {
+      content: "🕋";
+      font-size: 12rem;
+      opacity: 0.05;
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      pointer-events: none;
+    }
+
+    .hero-umrah h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+
+    .hero-umrah p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .badge-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .badge-keywords span {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* الحاويات العامة */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: var(--gold);
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 4px;
+    }
+
+    /* بطاقات البرامج بدون صور */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .program-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #eef2f6;
+      text-align: center;
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+      border-color: var(--gold);
+    }
+
+    .program-icon {
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .program-card h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .program-badge {
+      display: inline-block;
+      background: #fef9e6;
+      color: var(--gold-dark);
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .price-tag {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1rem 0;
+    }
+
+    .features-list {
+      text-align: right;
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .features-list li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .features-list i {
+      color: var(--gold);
+      width: 24px;
+    }
+
+    .btn-wa {
+      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+      border: none;
+      padding: 12px 20px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: white;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-wa:hover {
+      transform: scale(1.02);
+      background: var(--gold-dark);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    /* قسم تفاصيل إضافية للكلمات المفتاحية */
+    .keywords-section {
+      background: var(--light-bg);
+      border-radius: 32px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .keyword-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .keyword-item {
+      background: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-right: 3px solid var(--gold);
+    }
+
+    .info-box {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .info-box h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .info-box p {
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      background: var(--primary);
+      color: #ccc;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .fixed-wa {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #25D366;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: 0.3s;
+    }
+
+    .fixed-wa a {
+      color: white;
+      font-size: 2rem;
+    }
+
+    .fixed-wa:hover {
+      transform: scale(1.1);
+      background: #128C7E;
+    }
+
+    @media (max-width: 600px) {
+      .hero-umrah h1 {
+        font-size: 1.8rem;
+      }
+      .program-card h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط التنقل -->
+  <div class="navbar">
+    <div class="logo">
+      <i class="fas fa-mosque logo-icon"></i>
+      <div class="logo-text">
+        <h1>فارس المدينة</h1>
+        <span>للعمرة والزيارة</span>
+      </div>
+    </div>
+    <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#economic">عمرة اقتصادية</a></li>
+      <li><a href="#vip">عمرة VIP</a></li>
+      <li><a href="#booking-info">حجز & أسعار</a></li>
+      <li><a href="#contact">تواصل</a></li>
+      <li><a href="javascript:void(0)" onclick="window.location.href='/'">الرئيسية</a></li>
+    </ul>
+  </div>
+
+  <!-- قسم الهيرو الخاص بالصفحة (بدون صور) -->
+  <div class="hero-umrah" data-aos="fade-down">
+    <h1>🕋 <span style="color:white">عمرة من المدينة</span> بأفضل الأسعار</h1>
+    <p>انطلق من المدينة المنورة إلى مكة المكرمة بروحانية وطمأنينة مع شركة فارس المدينة – نقدم باقات اقتصادية وفاخرة تناسب جميع الراغبين في أداء العمرة داخل المملكة.</p>
+    <div class="badge-keywords">
+      <span>عمرة من المدينة المنورة</span>
+      <span>حجز عمرة من المدينة</span>
+      <span>أسعار عمرة من المدينة</span>
+      <span>رحلات عمرة من المدينة</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- قسم يبرز الكلمات المطلوبة بشكل واضح لتحسين السيو -->
+    <div class="keywords-section" data-aos="fade-up">
+      <h3 style="color: var(--primary);">✨ رحلات عمرة من المدينة – اختر ما يناسبك</h3>
+      <div class="keyword-highlight">
+        <span class="keyword-item"><i class="fas fa-check-circle"></i> عمرة من المدينة</span>
+        <span class="keyword-item"><i class="fas fa-check-circle"></i> عمرة من المدينة المنورة</span>
+        <span class="keyword-item"><i class="fas fa-check-circle"></i> حجز عمرة من المدينة</span>
+        <span class="keyword-item"><i class="fas fa-check-circle"></i> أسعار عمرة من المدينة</span>
+        <span class="keyword-item"><i class="fas fa-check-circle"></i> رحلات عمرة من المدينة</span>
+      </div>
+      <p style="margin-top: 1.5rem;">نوفر في فارس المدينة أفضل <strong>رحلات عمرة من المدينة</strong> لعملائنا داخل المملكة العربية السعودية، سواء كنت تبحث عن خيار اقتصادي ميسر أو تفضل تجربة العمرة الفاخرة VIP. جميع برامجنا تشمل نقل مريح، إقامة قريبة من الحرم، ومتابعة كاملة من فريق متخصص.</p>
+    </div>
+
+    <!-- برنامج العمرة الاقتصادية -->
+    <section id="economic" data-aos="fade-right">
+      <h2 class="section-title">عمرة اقتصادية من المدينة</h2>
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-icon"><i class="fas fa-coins"></i></div>
+          <h3>باقة اقتصادية</h3>
+          <div class="program-badge">⭐ أفضل قيمة للمال</div>
+          <div class="price-tag">ابتداءً من 450 ريال</div>
+          <ul class="features-list">
+            <li><i class="fas fa-bus"></i> نقل ذهاب وعودة (مدينة - مكة - مدينة)</li>
+            <li><i class="fas fa-hotel"></i> إقامة 3 نجوم قريبة من الحرم (غرفة مشتركة أو عائلية)</li>
+            <li><i class="fas fa-hands-praying"></i> رفيق عمرة مرافق للتوجيه</li>
+            <li><i class="fas fa-clock"></i> مرونة في مواعيد الرحلات (رحلات أسبوعية)</li>
+            <li><i class="fas fa-wifi"></i> واي فاي مجاني في الفندق</li>
+          </ul>
+          <a href="https://wa.me/966545489149?text=أريد%20حجز%20عمرة%20اقتصادية%20من%20المدينة" class="btn-wa"><i class="fab fa-whatsapp"></i> احجز الآن عمرة اقتصادية</a>
+        </div>
+        <div class="program-card">
+          <div class="program-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>باقة نصف اقتصادية</h3>
+          <div class="program-badge">مريحة + سعر ممتاز</div>
+          <div class="price-tag">ابتداءً من 650 ريال</div>
+          <ul class="features-list">
+            <li><i class="fas fa-car"></i> نقل خاص (ميني باس مكيف)</li>
+            <li><i class="fas fa-bed"></i> فندق 4 نجوم ، غرفة خاصة</li>
+            <li><i class="fas fa-utensils"></i> وجبة إفطار يومية</li>
+            <li><i class="fas fa-person-walking-arrow-right"></i> قريب من الحرم (باصات ترددية مجانية)</li>
+            <li><i class="fas fa-headset"></i> دعم على مدار الساعة</li>
+          </ul>
+          <a href="https://wa.me/966545489149?text=أريد%20تفاصيل%20عمرة%20نصف%20اقتصادي%20من%20المدينة" class="btn-wa"><i class="fab fa-whatsapp"></i> استفسر عن العمرة</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- برنامج العمرة VIP بدون أي صور -->
+    <section id="vip" data-aos="fade-left">
+      <h2 class="section-title">عمرة VIP – تجربة فاخرة من المدينة</h2>
+      <div class="programs-grid">
+        <div class="program-card" style="background: linear-gradient(145deg, #fff, #fef7e0); border-top: 4px solid var(--gold);">
+          <div class="program-icon"><i class="fas fa-crown"></i></div>
+          <h3>عمرة VIP & ليموزين</h3>
+          <div class="program-badge">✨ خدمة الملوك ✨</div>
+          <div class="price-tag">ابتداءً من 1450 ريال</div>
+          <ul class="features-list">
+            <li><i class="fas fa-car-side"></i> سيارة خاصة (ليموزين فاخرة) من المدينة إلى مكة والعودة</li>
+            <li><i class="fas fa-hotel"></i> إقامة 5 نجوم – فنادق مطلة على الحرم أو أبراج فاخرة</li>
+            <li><i class="fas fa-concierge-bell"></i> خدمة كونسييرج شخصي طوال الرحلة</li>
+            <li><i class="fas fa-champagne-glasses"></i> مشروبات ترحيبية وهدية روحية</li>
+            <li><i class="fas fa-person-walking-luggage"></i> مرشد خاص للعمرة يشرح المناسك بشكل تفصيلي</li>
+            <li><i class="fas fa-spa"></i> إمكانية إضافة جولات سياحية في مكة والمدينة</li>
+          </ul>
+          <a href="https://wa.me/966545489149?text=أرغب%20في%20حجز%20عمرة%20VIP%20من%20المدينة" class="btn-wa"><i class="fab fa-whatsapp"></i> حجز عمرة VIP الآن</a>
+        </div>
+        <div class="program-card" style="background: #ffffff;">
+          <div class="program-icon"><i class="fas fa-gem"></i></div>
+          <h3>باقة VIP العائلية</h3>
+          <div class="program-badge">للعوائل والأفراد</div>
+          <div class="price-tag">ابتداءً من 1950 ريال للفرد</div>
+          <ul class="features-list">
+            <li><i class="fas fa-van-shuttle"></i> حافلة صغيرة خاصة للعائلة</li>
+            <li><i class="fas fa-door-open"></i> أجنحة عائلية في فنادق قريبة جداً من الحرم</li>
+            <li><i class="fas fa-kitchen-set"></i> مطبخ صغير وخدمة غرف</li>
+            <li><i class="fas fa-child"></i> أنشطة تربوية للأطفال</li>
+            <li><i class="fas fa-ticket"></i> شحن مجاني للجوال وبيانات إنترنت غير محدودة</li>
+          </ul>
+          <a href="https://wa.me/966545489149?text=أرغب%20في%20حجز%20عمرة%20VIP%20عائلية%20من%20المدينة" class="btn-wa"><i class="fab fa-whatsapp"></i> اطلب عرض VIP</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم حجز وأسعار عمرة من المدينة (معلومات إضافية) -->
+    <div id="booking-info" class="info-box" data-aos="fade-up">
+      <h3><i class="fas fa-calendar-alt" style="color: var(--gold);"></i> حجز عمرة من المدينة المنورة – خطوات بسيطة</h3>
+      <p>إذا كنت تبحث عن <strong>حجز عمرة من المدينة</strong> بكل سهولة، فإن فارس المدينة توفر لك خدمة سريعة عبر الواتساب أو الاتصال المباشر. فقط أخبرنا بالبرنامج المفضل (اقتصادي / VIP) وتاريخ انطلاقك، وسنقوم بترتيب كل شيء: <strong>رحلات عمرة من المدينة</strong> تشمل النقل والإقامة والتصاريح اللازمة.</p>
+      <h4>📊 أسعار عمرة من المدينة (تحديث 2026)</h4>
+      <ul class="features-list" style="margin-bottom: 1rem;">
+        <li><i class="fas fa-tag"></i> البرنامج الاقتصادي: من 450 ريال سعودي (شامل النقل الجماعي + سكن 3 نجوم).</li>
+        <li><i class="fas fa-tag"></i> البرنامج المتطور: من 750 ريال (فندق 4 نجوم ووجبات).</li>
+        <li><i class="fas fa-tag"></i> البرنامج VIP: يبدأ من 1450 ريال (سيارة خاصة + فندق 5 نجوم).</li>
+        <li><i class="fas fa-tag"></i> أسعار العمرة العائلية VIP حسب عدد الأفراد.</li>
+      </ul>
+      <p><strong>ملاحظة:</strong> جميع الأسعار قابلة للتغيير حسب الموسم وعدد الأيام، لكننا نضمن أقل الأسعار وجودة لا تضاهى في <strong>رحلات عمرة من المدينة</strong>.</p>
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="https://wa.me/966545489149?text=أريد%20معرفة%20أحدث%20أسعار%20عمرة%20من%20المدينة" class="btn-wa" style="font-size: 1.1rem;"><i class="fab fa-whatsapp"></i> اطلب عرض سعر فوري</a>
+      </div>
+    </div>
+
+    <!-- قسم تفاصيل إضافية عن العمرة من المدينة وكلمات مفتاحية محسنة -->
+    <div class="info-box" data-aos="fade-up" data-aos-delay="100">
+      <h3><i class="fas fa-map-marked-alt"></i> رحلات عمرة من المدينة – لماذا فارس المدينة؟</h3>
+      <p>نحن شركة رائدة في تنظيم <strong>عمرة من المدينة المنورة</strong> للمقيمين والمواطنين داخل المملكة. تتميز خدماتنا بما يلي:</p>
+      <ul class="features-list">
+        <li><i class="fas fa-check-circle"></i> التزام تام بالمواعيد: انطلاق رحلات يومية وأسبوعية حسب الطلب.</li>
+        <li><i class="fas fa-check-circle"></i> أسعار شفافة بدون رسوم خفية: <strong>أسعار عمرة من المدينة</strong> واضحة وتنافسية.</li>
+        <li><i class="fas fa-check-circle"></i> فريق عمل متخصص ومتابعة 24 ساعة طوال الرحلة.</li>
+        <li><i class="fas fa-check-circle"></i> خيارات مرنة للإقامة والنقل: من باصات مكيفة إلى سيارات خاصة فارهة.</li>
+        <li><i class="fas fa-check-circle"></i> تسهيل إجراءات <strong>حجز عمرة من المدينة</strong> عبر تطبيقات التواصل.</li>
+      </ul>
+      <p>احصل على تجربة روحانية لا تنسى مع برامجنا المصممة خصيصاً لراحتك. سواء كنت تريد <strong>عمرة اقتصادية</strong> أو <strong>عمرة VIP</strong>، نحن نضمن لك رحلة مليئة بالسكينة والطمأنينة. فلا تتردد في التواصل معنا الآن.</p>
+    </div>
+
+    <!-- قسم تواصل إضافي -->
+    <div id="contact" style="text-align: center; margin: 3rem 0;" data-aos="zoom-in">
+      <h3 style="color: var(--primary); margin-bottom: 1rem;">تواصل مع فريق الحجز المباشر</h3>
+      <p>للاستفسار عن <strong>عمرة من المدينة المنورة</strong> أو حجز فوري، اضغط على زر الواتساب أو اتصل على الرقم الموحد.</p>
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+        <a href="https://wa.me/966545489149" class="btn-wa" style="background: #25D366;"><i class="fab fa-whatsapp"></i> واتساب: 966545489149+</a>
+        <a href="tel:966545489149" class="btn-wa" style="background: #002b5b;"><i class="fas fa-phone-alt"></i> اتصال مباشر</a>
+      </div>
+      <p class="footer-note" style="margin-top: 20px; font-size: 0.9rem; color: #475569;"><i class="fas fa-shield-alt"></i> نقدم خدمات العمرة المرخصة وفق أنظمة وزارة الحج والعمرة.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 فارس المدينة للعمرة والزيارة | جميع حقوق الطبع محفوظة</p>
+    <p>نقدم <strong>رحلات عمرة من المدينة</strong> بأفضل الخدمات – رحلات اقتصادية وVIP داخل المملكة</p>
+    <p>للتواصل: <a href="https://wa.me/966545489149">واتساب 0545489149</a> | البريد الإلكتروني: info@alfarees.site</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">الكلمات المفتاحية: عمرة من المدينة, عمرة من المدينة المنورة, حجز عمرة من المدينة, أسعار عمرة من المدينة, رحلات عمرة من المدينة, عمرة اقتصادية, عمرة VIP</p>
+  </div>
+
+  <!-- زر واتساب ثابت -->
+  <div class="fixed-wa">
+    <a href="https://wa.me/966545489149" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true, easing: 'ease-out' });
+
+    // قائمة التنقل للجوال
+    const toggleBtn = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navLinks');
+    if(toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    }
+    // إغلاق القائمة عند النقر على أي رابط
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
