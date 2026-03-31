@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>احجز رحلتك | فارس المدينة للعمرة</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #000000;
+      --secondary: #D4AF37;
+      --accent: #B8860B;
+      --accent-dark: #000000;
+      --light: #F5F5F5;
+      --bg: #f9f9f9;
+      --dark: #222222;
+      --gold-light: #FFD700;
+      --gold-dark: #B8860B;
+    }
+
+    body {
+      font-family: "Tajawal", sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--dark);
+      overflow-x: hidden;
+      padding-top: 0;
+    }
+
+    /* ===== Banner ===== */
+    .banner {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(90, 70, 0, 0.8)),
+        url('https://tawaf-kaaba.site/img/66.png') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 70px 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--gold-light), var(--gold-dark), var(--gold-light));
+      z-index: 1;
+    }
+
+    .banner h1 { 
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: var(--gold-light);
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .banner p { 
+      color: #f0f0f0; 
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== Logo ===== */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .logo-icon {
+      background: var(--gold-dark);
+      color: var(--primary);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .logo-text span {
+      color: var(--gold-light);
+    }
+
+    /* ===== FORM ===== */
+    .form-section {
+      background: #fff;
+      max-width: 700px;
+      margin: -40px auto 60px;
+      border-radius: 18px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      padding: 25px 20px;
+      border: 2px solid var(--primary);
+      position: relative;
+    }
+
+    .form-section::before {
+      content: "";
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      left: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, var(--primary), var(--gold-dark), var(--primary));
+      border-radius: 20px;
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    .form-header {
+      display: flex; 
+      justify-content: space-around; 
+      align-items: center; 
+      margin-bottom: 25px;
+      position: relative;
+    }
+    
+    .form-header::before {
+      content: ""; 
+      position: absolute; 
+      top: 50%; 
+      left: 8%;
+      right: 8%;
+      height: 4px; 
+      background: var(--light); 
+      transform: translateY(-50%);
+      border-radius: 5px;
+    }
+
+    .step {
+      background: var(--light); 
+      color: var(--dark); 
+      border-radius: 50%; 
+      width: 40px;
+      height: 40px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-weight: bold; 
+      z-index: 1;
+      transition: all 0.3s ease;
+      border: 3px solid var(--light);
+      font-size: 1rem;
+    }
+
+    .step.active { 
+      background: var(--primary); 
+      color: var(--gold-light); 
+      transform: scale(1.1); 
+      border-color: var(--gold-dark);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3);
+    }
+
+    .form-step { 
+      display: none; 
+      animation: fadeSlide 0.5s ease forwards; 
+    }
+
+    .form-step.active { 
+      display: block; 
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    label { 
+      display: block; 
+      margin-bottom: 8px;
+      font-weight: 700; 
+      color: var(--dark);
+      padding-right: 5px;
+    }
+
+    .creative-select {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .select-option {
+      background: var(--light);
+      border: 3px solid var(--light);
+      border-radius: 12px;
+      padding: 15px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .select-option:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-dark);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .select-option.selected {
+      background: linear-gradient(135deg, var(--primary), #333);
+      color: var(--gold-light);
+      border-color: var(--gold-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .select-option i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--gold-dark);
+    }
+
+    .select-option.selected i {
+      color: var(--gold-light);
+    }
+
+    .select-option h3 { margin: 0 0 6px 0; }
+    .select-option p { margin: 0; font-size: .9rem; color: #555; }
+
+    .select-option.selected p { color: #f0f0f0; }
+
+    .badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: var(--gold-dark);
+      color: var(--primary);
+      padding: 2px 6px;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .number-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      background: var(--light);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid var(--gold-dark);
+    }
+
+    .number-btn {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--gold-light);
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .number-btn:hover { 
+      background: var(--gold-dark); 
+      color: var(--primary);
+    }
+
+    .number-display {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--dark);
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .date-selector {
+      background: var(--light);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid var(--gold-dark);
+      margin-bottom: 20px;
+    }
+
+    .date-input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid var(--gold-dark);
+      border-radius: 8px;
+      font-size: 1rem;
+      background: white;
+      color: var(--dark);
+      text-align: center;
+    }
+
+    .text-input, .textarea-input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--gold-dark);
+      border-radius: 10px;
+      font-size: 1rem;
+      background: white;
+      color: var(--dark);
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    .text-input:focus, .textarea-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .textarea-input { min-height: 100px; resize: vertical; }
+
+    .buttons { 
+      display: flex; 
+      justify-content: space-between; 
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 2px solid var(--light);
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--primary), #333);
+      color: var(--gold-light); 
+      border: 2px solid var(--gold-dark);
+      border-radius: 10px;
+      padding: 14px 25px;
+      font-size: 1rem;
+      font-weight: 700; 
+      cursor: pointer; 
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #333, var(--primary));
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    .btn-secondary {
+      background: #f0f0f0;
+      color: var(--dark);
+      border: 2px solid #ccc;
+    }
+
+    .error-msg {
+      color: #d32f2f;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      padding-right: 5px;
+    }
+
+    .required::after {
+      content: " *";
+      color: #d32f2f;
+    }
+
+    /* Footer */
+    .footer-info {
+      text-align: center;
+      padding: 20px;
+      background: var(--primary);
+      color: white;
+      margin-top: 30px;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-light);
+    }
+
+    /* Success Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      border: 3px solid var(--gold-dark);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .modal-icon {
+      font-size: 3rem;
+      color: var(--gold-dark);
+      margin-bottom: 15px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Banner -->
+  <section class="banner">
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-kaaba"></i>
+      </div>
+      <div class="logo-text">فارس <span>المدينة</span></div>
+    </div>
+    <h1>احجز رحلتك إلى المدينة المنورة</h1>
+    <p>راحة ورفاهية في كل تفاصيل رحلتك مع فارس المدينة للعمرة والزيارة – رحلات خاصة من وإلى المدينة المنورة</p>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section">
+    <div class="form-header">
+      <div class="step active"><i class="fas fa-map-marked-alt"></i></div>
+      <div class="step"><i class="fas fa-couch"></i></div>
+      <div class="step"><i class="fas fa-calendar-check"></i></div>
+      <div class="step"><i class="fas fa-user-check"></i></div>
+    </div>
+
+    <form id="bookingForm">
+
+      <!-- Step 1: اختيار الوجهة (المدينة المنورة فقط) ونوع الرحلة -->
+      <div class="form-step active">
+        <label class="required">وجهة الرحلة</label>
+        <div class="creative-select" id="destination-select">
+          <!-- تم تعيين خيار واحد فقط وهو المدينة المنورة -->
+          <div class="select-option selected" data-value="المدينة المنورة">
+            <i class="fas fa-mosque"></i><h3>المدينة المنورة</h3>
+            <p>زيارة المسجد النبوي الشريف والروضة المطهرة</p>
+            <div class="badge">رحلة روحية</div>
+          </div>
+        </div>
+        <input type="hidden" id="destination" value="المدينة المنورة">
+
+        <label class="required">نوع الرحلة</label>
+        <div class="creative-select" id="package-select">
+          <div class="select-option" data-value="اقتصادية">
+            <i class="fas fa-wallet"></i><h3>اقتصادية</h3>
+            <p>رحلة مريحة بسعر مناسب</p>
+          </div>
+          <div class="select-option" data-value="VIP">
+            <i class="fas fa-crown"></i><h3>VIP</h3>
+            <p>خدمات فاخرة وأماكن مميزة</p>
+            <div class="badge">مميز</div>
+          </div>
+        </div>
+        <div id="package-error" class="error-msg" style="display:none;"></div>
+        <input type="hidden" id="package" required>
+
+        <div class="buttons">
+          <div></div>
+          <button type="button" class="btn next-step">التالي</button>
+        </div>
+      </div>
+
+      <!-- Step 2: عدد المقاعد والغرف -->
+      <div class="form-step">
+        <div class="number-selector-container">
+          <label><i class="fas fa-chair"></i> عدد المقاعد</label>
+          <div class="number-selector">
+            <button type="button" class="number-btn" id="decrease-seats">-</button>
+            <div class="number-display" id="seats-display">1</div>
+            <button type="button" class="number-btn" id="increase-seats">+</button>
+          </div>
+          <input type="hidden" id="seats" value="1">
+        </div>
+
+        <div class="number-selector-container">
+          <label><i class="fas fa-bed"></i> عدد الغرف</label>
+          <div class="number-selector">
+            <button type="button" class="number-btn" id="decrease-rooms">-</button>
+            <div class="number-display" id="rooms-display">1</div>
+            <button type="button" class="number-btn" id="increase-rooms">+</button>
+          </div>
+          <input type="hidden" id="rooms" value="1">
+        </div>
+
+        <div class="buttons">
+          <button type="button" class="btn-secondary btn prev-step">السابق</button>
+          <button type="button" class="btn next-step">التالي</button>
+        </div>
+      </div>
+
+      <!-- Step 3: عدد الأيام وتاريخ الرحلة -->
+      <div class="form-step">
+        <label><i class="fas fa-clock"></i> عدد الأيام</label>
+        <div class="number-selector">
+          <button type="button" class="number-btn" id="decrease-days">-</button>
+          <div class="number-display" id="days-display">3</div>
+          <button type="button" class="number-btn" id="increase-days">+</button>
+        </div>
+        <input type="hidden" id="days" value="3">
+
+        <div class="date-selector">
+          <label class="required"><i class="fas fa-calendar-alt"></i> تاريخ الرحلة</label>
+          <input type="date" id="date" class="date-input" required>
+        </div>
+
+        <div class="buttons">
+          <button type="button" class="btn-secondary btn prev-step">السابق</button>
+          <button type="button" class="btn next-step">التالي</button>
+        </div>
+      </div>
+
+      <!-- Step 4: بيانات العميل -->
+      <div class="form-step">
+        <label class="required"><i class="fas fa-user"></i> الاسم الكامل</label>
+        <input type="text" id="name" class="text-input" placeholder="اكتب اسمك" required>
+
+        <label class="required"><i class="fas fa-phone"></i> رقم الجوال</label>
+        <input type="tel" id="phone" class="text-input" placeholder="0545489149" required>
+
+        <label><i class="fas fa-sticky-note"></i> ملاحظات</label>
+        <textarea id="notes" class="textarea-input" placeholder="ملاحظات إضافية عن الرحلة (اختياري)"></textarea>
+
+        <div class="buttons">
+          <button type="button" class="btn-secondary btn prev-step">السابق</button>
+          <button type="submit" class="btn"><i class="fab fa-whatsapp"></i> احجز الآن</button>
+        </div>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer-info">
+    <p>للتواصل مع مكتب فارس المدينة للعمرة والزيارة</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>0545489149</span>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-whatsapp"></i>
+        <span>0545489149</span>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>info@fareesalmadinah.com</span>
+      </div>
+    </div>
+    <p style="margin-top: 15px; font-size: 0.9rem;">📍 شركة فارس المدينة للعمرة، المدينة المنورة، حي العزيزية، 14514</p>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h2>تم إدخال بياناتك بنجاح!</h2>
+      <p>سيتم الآن تحويلك إلى واتساب لإكمال عملية الحجز مع خدمة العملاء.</p>
+      <div class="modal-buttons">
+        <button type="button" class="btn-secondary" id="cancelModal">إلغاء</button>
+        <button type="button" class="btn" id="confirmWhatsApp">
+          <i class="fab fa-whatsapp"></i> الانتقال إلى واتساب
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const steps = document.querySelectorAll(".step"),
+          formSteps = document.querySelectorAll(".form-step");
+    let currentStep = 0;
+    let formData = {};
+
+    function showStep(i){
+      formSteps.forEach((s,idx)=>s.classList.toggle("active",idx===i));
+      steps.forEach((s,idx)=>s.classList.toggle("active",idx===i));
+    }
+
+    // Initialize selection options (الوجهة محددة مسبقاً المدينة المنورة)
+    document.querySelectorAll('.select-option').forEach(opt=>{
+      opt.addEventListener('click',function(){
+        const parent=this.closest('.creative-select');
+        parent.querySelectorAll('.select-option').forEach(o=>o.classList.remove('selected'));
+        this.classList.add('selected');
+        const hidden = parent.id.replace('-select','');
+        document.getElementById(hidden).value=this.dataset.value;
+
+        if(hidden === 'package'){
+          document.getElementById('package-error').style.display='none';
+        }
+      });
+    });
+
+    // Initialize number selectors
+    function setup(displayId,inputId,min=1,max=30){
+      const disp=document.getElementById(displayId),
+            inp=document.getElementById(inputId),
+            dec=document.getElementById(`decrease-${inputId}`),
+            inc=document.getElementById(`increase-${inputId}`);
+      let v=parseInt(inp.value);
+
+      function update(n){
+        if(n>=min && n<=max){
+          v=n; disp.textContent=v; inp.value=v;
+        }
+      }
+
+      if(dec) dec.addEventListener('click',()=>update(v-1));
+      if(inc) inc.addEventListener('click',()=>update(v+1));
+    }
+
+    setup("seats-display","seats");
+    setup("rooms-display","rooms");
+    setup("days-display","days",1,30);
+
+    // Step validation
+    function validateStep(stepIndex){
+      if(stepIndex === 0) {
+        const pkg = document.getElementById('package').value;
+        const pkgErr = document.getElementById('package-error');
+        pkgErr.style.display = 'none';
+        if(!pkg){
+          pkgErr.textContent = 'من فضلك اختر نوع الرحلة أولاً';
+          pkgErr.style.display = 'block';
+          return false;
+        }
+        return true;
+      }
+      
+      if(stepIndex === 2) {
+        const date = document.getElementById('date').value;
+        if(!date) {
+          alert('من فضلك اختر تاريخ الرحلة');
+          return false;
+        }
+        return true;
+      }
+      
+      return true;
+    }
+
+    // Next step buttons
+    document.querySelectorAll(".next-step").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        if(!validateStep(currentStep)) return;
+        if(currentStep < formSteps.length-1){
+          currentStep++;
+          showStep(currentStep);
+        }
+      });
+    });
+
+    // Previous step buttons
+    document.querySelectorAll(".prev-step").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        if(currentStep>0){
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+    });
+
+    // Form submission
+    document.getElementById("bookingForm").addEventListener("submit",e=>{
+      e.preventDefault();
+
+      // Collect form data
+      formData = {
+        destination: document.getElementById('destination').value,
+        pkg: document.getElementById('package').value,
+        seats: document.getElementById('seats').value,
+        rooms: document.getElementById('rooms').value,
+        days: document.getElementById('days').value,
+        date: document.getElementById('date').value,
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        notes: document.getElementById('notes').value
+      };
+
+      // Validate required fields in step 4
+      if(!formData.name || !formData.phone) {
+        alert('من فضلك أدخل الاسم الكامل ورقم الجوال');
+        return;
+      }
+
+      // Show success modal
+      document.getElementById('successModal').style.display = 'flex';
+    });
+
+    // Modal functionality
+    document.getElementById('cancelModal').addEventListener('click', function() {
+      document.getElementById('successModal').style.display = 'none';
+    });
+
+    document.getElementById('confirmWhatsApp').addEventListener('click', function() {
+      // استخدام الرقم المطلوب 0545489149 بصيغة واتساب دولية
+      const whatsappNumber = "966545489149"; // 0545489149 بدون الصفر الأول
+      const msg = 
+`مرحباً، أود حجز رحلة عمرة مع فارس المدينة للعمرة والزيارة:
+
+الوجهة: ${formData.destination}
+نوع الرحلة: ${formData.pkg}
+عدد المقاعد: ${formData.seats}
+عدد الغرف: ${formData.rooms}
+عدد الأيام: ${formData.days}
+التاريخ: ${formData.date}
+الاسم: ${formData.name}
+الجوال: ${formData.phone}
+ملاحظات: ${formData.notes || "لا يوجد"}
+
+--- تم إدخال البيانات عبر موقع فارس المدينة ---`;
+
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+      document.getElementById('successModal').style.display = 'none';
+    });
+
+    // Set today's date as default and min date
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').min = today;
+    document.getElementById('date').value = today;
+
+    // تعيين القيمة الافتراضية لنوع الرحلة لتجنب الخطأ (اختيار أول خيار)
+    if(!document.getElementById('package').value){
+      const firstPkg = document.querySelector('#package-select .select-option');
+      if(firstPkg){
+        firstPkg.classList.add('selected');
+        document.getElementById('package').value = firstPkg.dataset.value;
+      }
+    }
+  </script>
+
+</body>
+</html>
